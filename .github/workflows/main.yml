@@ -15,6 +15,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
+          # כאן אנחנו משאירים את ה-Username ידנית או דרך Secret
+          # אם ה-Secret עושה בעיות, פשוט תכתוב כאן את השם שלך במירכאות, למשל: "shaul123"
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
@@ -22,6 +24,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile  # כאן התיקון! אמרנו לו לחפש Dockerfile ולא Dockerfile.dev
+          file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
+          # כאן שיניתי: תחליף את המילה shaul בשם המשתמש האמיתי שלך ב-Docker Hub
+          tags: shaulbgc/my-flask-app:latest
