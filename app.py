@@ -1,10 +1,13 @@
-from flask import Flask
+from flask import Flask         #שורה שאומרת להשתמש בפלסק מספריית פלסק
 
-app = Flask(__name__)
+app = Flask(__name__)           #שורה שנותנת למשתנה בשם אפ את הערך שאומר לפלסק איפה המיקום של הקובץ שעליו אתה עובד נמצא  
 
-@app.route("/")
-def home():
-    return "Hello from my first website! - 2.0"
+@app.route("/")                 #נוכל להגיע לדף הבית של האתר אם נכתוב בדפדפן תו זה
+def home():                     #פונקציה שמפעילה מה נראה כשניכנס לאתר
+   return """
+    <h1> welcome to my website! </h1>
+    <p> my name is shaul and this is a project about DevOps</p>
+    """
 
-if __name__ == "__main__":
+if __name__ == "__main__":      #אם התיוג של קובץ קוד זה הוא מיין אז המחשב יאזין לבקשות פורט 80 מהאינטרנט ותשלח תשובות שכוללות את האפליקציה הזאת
     app.run(host="0.0.0.0", port=80)
